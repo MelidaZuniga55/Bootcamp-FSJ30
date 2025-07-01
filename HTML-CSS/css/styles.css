@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+/* DECLARAR VARIABLES */
+:root{
+    --primary-color: #16c2c2;
+}
+
+
+html{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: gray  ;
+    background-image: url("../images/background-adare-restaurant.jpg");
+    background-size: cover;
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+    text-align: center;
+}
+
+/* ".class > .class2" es para la clase hija directa, ".class .class2" es alguna hija que este dentro de la primera */
+.container .header{
+    text-align: center;
+    height: 15vh;
+}
+
+.container .header .img-container{
+    height: 12vh;
+    display: flex;
+    justify-content: center;
+} 
+.container .header .img-container .img-logo{
+    height: 12vh;
+} 
+
+
+/* Navbar   Flex (libertad de mover cajas a voluntad) y Grid(establece filas y columnas para colocar las cajas en relacion a ellas)*/
+.container .header .navbar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.container .header .navbar{
+    display: flex;
+    justify-content: space-between;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.container .header .navbar .nav-item{
+    color: white;
+    text-decoration: none;
+    font-size: 1.4em;
+
+    transition: 0.3s ease-in-out;
+}
+
+.container .header .navbar .nav-item:hover{
+    /*Implementar el keyframe 
+    animation: navItemHover 0.3s forwards; */
+
+    color: var(--primary-color);
+    font-size: 1.6em;
+    text-decoration: underline;
+}
+
+/* usar KeyFrames para animaciones, para hover no */
+
+/* @keyframes navItemHover {
+    To {
+        color: var(--primary-color);
+        font-size: 1.6em;
+        text-decoration: underline;
+    }
+} */
+
+/* MAIN CONTENT */
+.container .main-container{
+    margin-top: 5vh;
+}
+
+/* TEXT SECTION */
+
+.container .main-container .main-text{
+    color: white;
+    padding: 2em;
+}
+
+.container .main-container .main-text h1{
+    font-family: "Gorditas", serif;
+    font-size: 4em;
+
+    transition: all 2s;
+}
+
+.container .main-container .main-text h1:hover{
+    text-shadow: 0.05em 0.05em var(--primary-color);
+}
+
+.container .main-container .main-text article{
+    margin: 0 auto;
+    max-width: 40vw;
+}
+
+.container .main-container .main-text article p{
+    color: #d2d2d2;
+    font-family: serif;
+    font-size: 1.1em;
+}
+
+.container .main-container .main-text article p strong a{
+    font-family: "Gorditas", serif;
+    text-decoration: none;
+    color: white;
+    text-shadow: 0.05em 0.05em #16c2c2;
+}
+
+/* MAP SECTION */
+
+.container .main-container .map-container .maps {
+    height: 50vh;
+    width: 68vw;
+}
+
+/* FOOTER */
+
+.container .footer{
+    color: white;
+}
+
+.container .footer h4{
+    font-size: 1.1em;
+}
