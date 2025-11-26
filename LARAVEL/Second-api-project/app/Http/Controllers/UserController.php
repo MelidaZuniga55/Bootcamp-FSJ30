@@ -57,11 +57,11 @@ class UserController extends Controller
         $user = $request->user();
         //$user = Aut::user();
 
-        //Declramamos el tiempo de expiración del token
+        //Declaramos el tiempo de expiracion del token 
         $expirationTimeToken = Carbon::now()->addMinutes(30);
 
         //Generamos un token de acceso para el usuario autenticado
-        $token = $user->createToken('auth_token', ['server:update'],)->plainTextToken;
+        $token = $user->createToken('auth_token', ['server:update'],$expirationTimeToken)->plainTextToken;
 
         return response()->json([
             'message' => 'User logged successfully',
@@ -72,21 +72,19 @@ class UserController extends Controller
     }
 }
 
-    public function logout(Request $request){
-        //Obtenemos el usuario logueado en este caso a trves del request (no se pasa en el body) en el autorization
-        $user = $request->user();
+public function logout(Request $request){
+    //Obtenemos el usario logueado a traves del request (no se pasa en el body) en el authorization
+    $user = $request->user();
 
-        //Revocamos ese token, hace que el token quede invalido y que el usuario tenga que generar uno nuevo
-        $user->currentAccesToken()->detele();
+    //Revocamos ese token, hace que el token quede invalido y que el usuario tenga que generar uno nuevo
+    $user->currentAccessToken()->delete();
 
-        //Revocamos TODOS los token activos -> sirv para cambio de contraseña o alguna funcionalidad en especifico
-        //de cerrar todas las sesiones del usuario
-        // $user = $request->user();
+    //Revocamos TODOS los tokens activos -> Sirve para caambios de contrasenias o una funcionalidad en especifico de cerrar todas las sesiones del usuario
+    //$user->tokens()->delete
 
-        return response()->json([
-            'message' => 'User logged out successfully',
-            'status' => '200'
-        ],200);
-    }
-
+    return response()->json([
+        'message' => 'User logged out successfully',
+        'status' => 200
+    ],200);
+}
 }
